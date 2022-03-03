@@ -1,0 +1,16 @@
+
+@media (min-width: 768px) {
+    body{
+        margin: 0;
+        padding: 0;
+        --sideLeftMargin: calc(1% + var(--socialMediaIconSize));
+        --sideRightMargin: calc(1% + var(--socialMediaIconSize));
+        --sideLeftMarginSmall: 1%;
+        --sideRightMarginSmall: 1%;
+    }
+
+    .social-sidebar {
+        visibility: visible;
+    }
+      
+} 

@@ -1,0 +1,250 @@
+/* Header Slider */
+.slider-container{		
+	--sliderHeight: 52vw;
+	--sliderSideMargin: 1em;
+	/* margin: 0  var(--sideRightMargin) 130px var(--sideLeftMargin); */
+} 
+
+.slider-wrapper {
+	border-radius: 3px;
+	position: relative;
+	width: 100%;
+	height: var(--sliderHeight);
+	min-width: 300px;
+	min-height: 140px;
+	overflow: hidden;
+	box-shadow: 5px 5px 2px var(--primaryColor);
+}
+	
+.pic {
+	display: inline-block;
+	position: absolute;
+	width: 100%;
+}
+	
+.pic img {
+	width: 100%;
+	filter: brightness(65%);
+}
+	
+.move .pic {
+	transition: all .8s ease;
+}
+	
+.current {
+	left: 0;
+}
+	
+.move.next-dir .current {
+	left: -100%;
+}
+	
+.move.prev-dir .current {
+	left: 100%;
+}
+	
+.next {
+	left: 100%; /* 1x the width */
+	z-index: -100;
+}
+	
+.prev {
+	left: -100%; /* -1x the width */
+	z-index: -100;
+}
+	
+.move .next {
+	left: 0;
+}
+	
+.move .prev {
+	left: 0;
+}
+	
+.prev-dir .next {
+	left: 100%;
+}
+	
+.next-dir .prev {
+	left: -100%;
+}
+
+.sliderContent{
+	position: absolute;
+	top: calc(var(--sliderHeight) / 4);
+	left: 5em;
+	right: 5em;
+	z-index: 1;
+}
+.sliderContent .headerMoto{
+	text-align: left;
+}
+
+.sliderContentHeader{
+	position: absolute;
+	top: calc(var(--sliderHeight) / 3);
+	left: var(--sliderSideMargin);
+	right: var(--sliderSideMargin);
+	text-align: left;
+	z-index: 1;
+}
+
+.sliderLink{
+	font-size: 16px;
+	color: white;
+	text-decoration: none;
+	cursor: pointer;
+	z-index: 1;
+	padding: 9px;
+	margin:0;
+	background-color: white;
+	color: black;
+	transition:background-color 0.3s;
+	border-radius: 5px;
+}
+.sliderLink:hover {
+	background-color: var(--primaryColor);
+}
+
+.sliderContentHeader .sliderLink{
+	margin-left: 3em;
+}
+.sliderButtons button{
+	position: absolute;
+	bottom: 0.5em;
+	margin: auto;
+	width: 3em;
+	height: 3em;
+	z-index: 10;
+	border-radius: calc(4em + 1px);
+	border: 1px solid var(--primaryColor);
+	color: var(--primaryColor);
+	background-color: transparent;
+	cursor: pointer;
+	outline: 0;
+	transition: 0.3s ease-in-out;
+}
+.sliderButtons button:hover{
+	background-color: var(--primaryColor);
+}
+.sliderButtons button:hover .arrow{
+	border: solid white; 
+	border-width: 0 3px 3px 0;
+}
+.sliderButtons button:active{
+	transform: scale(0.9);
+	transition: 0s ease-in-out;
+}
+.sliderButtonLeft{
+	left: 0.5em;
+}
+.sliderButtonRight{
+	right: 0.5em;
+}
+.arrow {
+	border: solid var(--primaryColor);
+	border-width: 0 3px 3px 0;
+	display: inline-block;
+	padding: 3px;
+}
+.right {
+	transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+	margin-right: 4px;
+}
+.left {
+	transform: rotate(135deg);
+	-webkit-transform: rotate(135deg);
+	margin-left: 4px;
+}
+
+.headerMoto{
+	text-align: center;
+	font-size: 1em;
+	color: white;
+	z-index: 1;
+}
+
+.refNavigator{
+	position: absolute;
+	top:0;
+	width: 1px;
+	height: 1px;
+}
+
+
+@media (min-width: 576px) {
+	
+	.slider-container{
+		--sliderSideMargin: 3.5em;
+	}
+
+	.sliderButtons button{
+		position: absolute;
+		bottom: 0;
+		top: 0;
+		margin: auto;
+	}
+
+	.headerMoto{
+		font-size: 1.3em;
+	}
+
+	.slider-wrapper{
+		box-shadow: 8px 8px 2px var(--primaryColor);
+	}
+
+	.sliderButtonLeft{
+		left: 1em;
+	}
+	.sliderButtonRight{
+		right: 1em;
+	}
+
+}
+
+@media (min-width: 768px) {	
+
+	.slider-container{	
+        --sliderHeight: 47vw;
+		--sliderSideMargin: 4em;
+	}
+
+	.headerMoto{
+		font-size: 2em;
+	}
+
+		
+	.sliderLink{
+		padding: 15px;
+	}
+
+}
+
+@media (min-width: 992px) {	
+
+	.slider-container{	
+        --sliderHeight: 34vw;
+	}
+}
+
+@media (min-width: 1199px) {	
+
+	.slider-container{	
+        --sliderHeight: 33vw;
+	}
+}
+
+
+@media (min-width: 1369px) {
+	.headerMoto{
+		font-size: 3em;
+	}
+
+}
+
+
+
+
+
+ 

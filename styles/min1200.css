@@ -1,0 +1,12 @@
+
+@media (min-width: 1200px) {
+    body{
+        margin: 0;
+        padding: 0;
+		--sideLeftMargin: 8%;
+		--sideRightMargin: 32%;
+        --sideLeftMarginSmall: 8%;
+        --sideRightMarginSmall: 10%;
+    }
+    
+}

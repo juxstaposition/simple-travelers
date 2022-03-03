@@ -1,0 +1,24 @@
+
+@media (min-width: 576px) {
+    body{
+        margin: 0;
+        padding: 0;
+        --sideLeftMargin: 2%;
+        --sideRightMargin: 2%;
+        --sideLeftMarginSmall: 1%;
+        --sideRightMarginSmall: 1%;
+        --headerHeight: 80px;
+    }
+
+    .st-tabs-container h1{
+        font-size: 2.5rem;
+    }
+
+    .logoTravelers{
+        max-width: 44px;
+    }
+    
+    .map-wrapper{
+        box-shadow: 8px 8px 2px var(--primaryColor);
+    }
+} 
