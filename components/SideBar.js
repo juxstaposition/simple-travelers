@@ -1,11 +1,10 @@
+import FacebookPage from "./FacebookPage";
+
 function SideBar(){
     return (
-        <div className="sidePanel">
-            <div className="sidePanelContainer">
-                <img 
-                    alt="pagePhotoUs" 
-                    src="/images/photosFull/AboutUs.jpg" 
-                />
+        <div className="side-panel">
+            <div className="side-panel-container">
+                <FacebookPage />
                 <h3>Sleduj nás na Facebooku</h3>
             </div>
         </div>

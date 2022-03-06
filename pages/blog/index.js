@@ -106,7 +106,7 @@ function Blog() {
 	
     return (
 		<div className='page'>
-			<Head>
+			{/* <Head>
 				<text>Blog</text>
 				<meta property="og:text"       content="Blog" />
 				<meta property="og:description" content="Články, rady a tipy o cestovaní po svete od Simple Travelers" />
@@ -115,7 +115,7 @@ function Blog() {
 				<meta property="og:url" 		content="http://simpletravelers.sk/cestopisy" />
 				<link rel="canonical" href="http://simpletravelers.sk/cestopisy" />
 				<meta name="keywords" content="cestovatelsky blog, cestopisy, rady a tipy na cestovanie, cestovanie, erasmus, USA roadtrip, roadtrip, slovenské srdcovky" />
-			</Head>
+			</Head> */}
 			<h2>Blog</h2>
 			<Form
 				layout='horizontal'

@@ -1,23 +1,15 @@
 import { useState, useEffect } from 'react';
 
 import Head from 'next/head';
-import Slider from '../components/SliderLegacy';
+import Slider from '../components/Slider';
 import TravelMap from '../components/TravelMap';
 
 
 
-const SLIDES = [
-    {
-        title: "Cestovateľský blog, ktorý nakopne tvoju chuť objavovať svet",
-        image: "images/photosFull/ZionAngelsLanding16-9.jpg",
-        class: "sliderContentHeader"
-    }
-]
-
 
 export default function HomePage() {
 
-    const [articlesList, setArticlesList] = useState(SLIDES)
+    const [articlesList, setArticlesList] = useState([])
 
     useEffect(() => {
         const fetchArticles = async() => {
@@ -31,9 +23,9 @@ export default function HomePage() {
             newArticleList = [ 
                 {   
                     title: "Cestovateľský blog, ktorý nakopne tvoju chuť objavovať svet",
-                    image: "images/photosFull/ZionAngelsLanding16-9.jpg",
+                    image: "/images/photosFull/ZionAngelsLanding16-9.jpg",
                     class: "sliderContentHeader",
-                    url:"/"
+                    url:"/blog"
                 }, 
                 ...newArticleList
             ]
@@ -41,7 +33,7 @@ export default function HomePage() {
             return data;
         }
 
-        fetchArticles(setArticlesList)
+        fetchArticles()
     }, []);
 
     return (
@@ -56,14 +48,14 @@ export default function HomePage() {
                 <link rel="canonical" href="http://simpletravelers.sk/" />
                 <meta name="keywords" content="$OG_KEYWORDS" />
 			</Head>
-            
             <div className="slider-container" >
                 <Slider slides={articlesList} />
             </div>
+            <TravelMap />
+
             {/* <div className='page'>
                 <UploadArticles />
             </div> */}
-            <TravelMap />
         </div>
     )
 }

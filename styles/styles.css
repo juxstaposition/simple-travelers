@@ -13,7 +13,7 @@ html{
     --darkColor: #030e12; 
     --secondaryColor: #e1eedd;
     overflow-x: hidden;
-    background-color: var(--backgroundColor);
+    /* background-color: var(--backgroundColor); */
 }
 /* #ef9273 #fef9f8 #0d0d0d*/
 ::-webkit-scrollbar {
@@ -52,7 +52,6 @@ body{
     padding-top: var(--headerHeight);
     margin-right: var(--sideRightMargin);
     margin-left: var(--sideLeftMargin);
-    background-color: var(--backgroundColor);
 }
 
 /* Tabs Start */
@@ -63,7 +62,6 @@ body{
     height: var(--headerHeight);
     top: 0;
     z-index: 100;
-    /* background-color: var(--primaryColor); */
     background-color: var(--backgroundColor);
     padding-left: var(--sideLeftMarginSmall);
 }
@@ -98,6 +96,9 @@ body{
 .st-tabs-container h1:hover{
     color: var(--primaryColor);
     text-shadow: 0 0 0.01px gray;
+}
+.title-simpletravelers{
+    height: var(--headerHeight);
 }
 
 @media (max-width: 335px) {
@@ -719,21 +720,35 @@ h3{
     margin-right: 10px;
     /* border-left: 1px solid grey; 
 } */
-.sidePanelContainer{
+.side-panel-container{
     
     visibility: hidden;
     position: fixed;
-    width: calc( var(--sideRightMargin) ) ;
+    width: calc( var(--sideRightMargin));
+    min-height: 250px;
     top: var(--headerHeight);
     right: 0;
     padding: 0 15px;
     z-index: 10;
 }
-.sidePanelContainer img{
+.side-panel-container img{
     border-radius: 3px;
     width: 100%;
     margin-bottom: 15px;
 }
+
+.fb-page span{
+    height: 300px;
+    margin: 0;
+    margin-bottom: 10px;
+}
+.fb-page iframe{
+    visibility: hidden;
+    border-radius: 3px;
+    box-shadow: 5px 5px 2px var(--primaryColor);
+}
+
+
 
 .social-sidebar {
     visibility: hidden;

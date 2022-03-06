@@ -139,8 +139,9 @@ function Tabs() {
     }
     return(
         <div className="st-tabs-container">
-            <img className="logoTravelers" alt="lindatravelerslogo" src="/icons/travelers.png" />
+            <img className="logoTravelers" alt="simpletravelers-logo" src="/icons/travelers.png" />
             <Link  href="/" passHref><h1>Simple Travelers</h1></Link>
+            {/* <Link  href="/" passHref><img className='title-simpletravelers' alt="lindatravelers" src="/icons/SimpleTravelers.svg" /></Link> */}
             { RenderTabs() }
         </div>
     )

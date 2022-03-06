@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import Link from 'next/link';
-
+import TravelMapPolyline from './TravelMapPolyline';
+import VisitedCountries from '../data/Countries';
 
 const places = [
 	{
@@ -31,7 +32,7 @@ function TravelMap() {
 			return data;
 		}
 		
-		fetchArticles(setMapPlaces)
+		fetchArticles()
 	}, []);
 
 
@@ -86,7 +87,17 @@ function TravelMap() {
 					)
 				}
 			})}
-			
+			{
+				VisitedCountries.map(country =>{
+					return(
+						<TravelMapPolyline 
+							key={country.name}
+							name={country.name}
+							paths={country.points}
+						/>
+					)
+				})
+			}
 			</GoogleMap>
 		</LoadScript>
 			
