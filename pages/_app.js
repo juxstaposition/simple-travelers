@@ -21,6 +21,7 @@ import "../styles/min768.css";
 import "../styles/min992.css";
 import "../styles/min1200.css";
 import "../styles/slider.css";
+import "../styles/image-grid.css";
 import "../styles/burger-menu.scss";
 import 'antd/dist/antd.css';
 

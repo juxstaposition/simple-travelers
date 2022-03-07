@@ -62,7 +62,7 @@ body{
     height: var(--headerHeight);
     top: 0;
     z-index: 100;
-    background-color: var(--backgroundColor);
+    background: linear-gradient(180deg, var(--backgroundColor) 0%,var(--backgroundColor) 94%, var(--primaryColor) 97%, var(--backgroundColor) 100%);
     padding-left: var(--sideLeftMarginSmall);
 }
 
