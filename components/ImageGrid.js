@@ -17,7 +17,7 @@ function ImageGrid(props){
         }
     };
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         window.addEventListener("resize", updateGalleryWidth);
         updateGalleryWidth()
         return () => {  window.removeEventListener("resize", updateGalleryWidth); };
@@ -123,7 +123,7 @@ function ImageGrid(props){
                 }}
             >
                 <Image
-                    src={item.src}
+                    src={item.thumbnail}
                     item={item}
                     index={idx}
                     width={item.vwidth}
@@ -135,7 +135,6 @@ function ImageGrid(props){
 
 
 
-    console.log("gallery width:", galleryWidth)
     return(
         <div
             style={{

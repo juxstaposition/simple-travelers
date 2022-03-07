@@ -13,6 +13,12 @@
         font-size: 3rem;
     }
     
+    
+    .fb-page iframe{
+        display: inline-block;
+        visibility: visible;
+    }    
+    
     .sidePanelContainer{
         visibility: visible;
     }

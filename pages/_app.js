@@ -11,7 +11,6 @@
 </Head>
 */
 import React from 'react';
-import Head from 'next/head';
 import Layout from '../components/Layout';
 import Footer from '../components/Footer'; 
 
@@ -28,8 +27,6 @@ import 'antd/dist/antd.css';
 function MyApp({ Component, pageProps }) {
 	return (
 		<>
-			<Head>
-			</Head>
 			<Layout/>
 			<Component {...pageProps} />
 			<Footer />

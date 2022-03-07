@@ -1,3 +1,4 @@
+import Head from 'next/head';
 
 import ImageGrid from '../components/ImageGrid';
 
@@ -649,6 +650,16 @@ const CestaSNPIMAGES = [
 function Galeria() {
     return (
 		<div className="page screen-reader-text">
+			<Head>
+				<title>Geléria</title>
+				<meta property="og:title"       content="Simle Travelers - Galéria" />
+				<meta property="og:description" content="Prehliadni si výber našich najlepších fotiek z cestovania po celom svete." />
+				<meta name="description"        content="Prehliadni si výber našich najlepších fotiek z cestovania po celom svete." />
+				<meta property="og:image"       content="http://simpletravelers.sk/images/photosFull/ZionAngelsLanding.jpg" />
+				<meta property="og:url" 		content="http://simpletravelers.sk/galeria" />
+				<link rel="canonical" href="http://simpletravelers.sk/galeria" />
+				<meta name="keywords" content="" />
+			</Head>
             <h2>Galéria</h2>
             <h3>Kolekcia našich najlepších fotiek</h3>
 			<ImageGrid 
