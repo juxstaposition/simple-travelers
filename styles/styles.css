@@ -61,9 +61,11 @@ body{
     width: 100%;
     height: var(--headerHeight);
     top: 0;
+    left: 0;
     z-index: 100;
     background: linear-gradient(180deg, var(--backgroundColor) 0%,var(--backgroundColor) 94%, var(--primaryColor) 97%, var(--backgroundColor) 100%);
     padding-left: var(--sideLeftMarginSmall);
+
 }
 
 .st-tabs-container:before {
@@ -132,8 +134,9 @@ body{
     list-style: none;
     white-space: nowrap;
     font-size: 22px;
-    padding-right: var(--sideRightMarginSmall);
     margin-left: auto;
+    margin-right: var(--sideRightMarginSmall);
+
 }
 .inline-link {
     color: blue;

@@ -36,7 +36,6 @@ function Blog() {
 			setArticlesList(data.articleList);
 			
 			// set display articles
-			// const orderedArticles = data.articleList.sort((a, b) => new Date(b.dateCreated) - new Date(a.dateCreated))
 			setArticlesDisplay(sortArticles(data.articleList,'asc'));
 
 			// load categories for filtering
@@ -59,7 +58,6 @@ function Blog() {
 	}, []);
 	
 	const handleSortChange = () => {
-
 		setSortState(sortState === 'asc' ? 'dsc' : 'asc')
 		setArticlesDisplay(sortArticles(articlesDisplay,sortState=== 'asc' ? 'dsc' : 'asc'));
 	}
@@ -82,7 +80,6 @@ function Blog() {
 				run = true
 			})
 		}
-			
 		setArticlesDisplay(sortArticles(displayArticlesList,sortState));
 	}
 
