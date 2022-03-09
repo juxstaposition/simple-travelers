@@ -22,4 +22,9 @@
     .sidePanelContainer{
         visibility: visible;
     }
+    
+    .lightbox-img{
+        width: 70%;
+        padding: 3em;
+    }
 } 

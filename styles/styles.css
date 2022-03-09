@@ -905,6 +905,65 @@ h3{
 }
 /* END */
 
+.lightbox {
+    z-index: 1001;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    cursor: pointer;
+    background-color: rgb(190, 190, 190, .5);
+    /*the following isn't necessary but will help center everything once we add buttons*/
+    /* display: flex; */
+    align-items: center;
+    /* justify-content: space-between; */
+    
+}
+
+.lightboxButtons button{
+	position: absolute;
+	margin: auto;
+	width: 3em;
+	height: 3em;
+	z-index: 1010;
+	border-radius: calc(4em + 1px);
+	border: 1px solid var(--primaryColor);
+	color: var(--primaryColor);
+	background-color: transparent;
+	cursor: pointer;
+	outline: 0;
+	transition: 0.3s ease-in-out;
+}
+.lightboxButtons button:hover{
+	background-color: var(--primaryColor);
+}
+.lightboxButtons button:hover .arrow{
+	border: solid white; 
+	border-width: 0 3px 3px 0;
+}
+.lightboxButtons button:active{
+	transform: scale(0.9);
+	transition: 0s ease-in-out;
+}
+.lightboxButtonLeft{
+	left: 0.5em;
+    top: 0;
+}
+.lightboxButtonRight{
+	right: 0.5em;
+    top: 0;
+}
+
+.lightbox-img{
+    width: 100%;
+    padding: 1em;
+    object-fit: contain;
+        
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
 /* 
 @media (min-width: 576px) {
 	

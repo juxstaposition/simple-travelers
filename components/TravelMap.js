@@ -4,25 +4,10 @@ import Link from 'next/link';
 import TravelMapPolyline from './TravelMapPolyline';
 import VisitedCountries from '../data/Countries';
 
-const places = [
-	{
-	  title: "Prague",
-	  lat: 50.077,
-	  lng: 14.438,
-	  image: "images/photosFull/ZionAngelsLanding.jpg"
-	},
-	{
-	  title: "Veľkofatranská magistrála",
-	  lat: 49.1178975070967,
-	  lng: 19.16068907323384,
-	  url: "/velkofatranskamagistrala",
-	  image: "images/photosFull/ZionAngelsLanding.jpg"
-	}
-];
 
 function TravelMap() {
 
-	const [mapPlaces, setMapPlaces] = useState(places)
+	const [mapPlaces, setMapPlaces] = useState([])
 
 	useEffect(() => {
 		const fetchArticles = async() => {

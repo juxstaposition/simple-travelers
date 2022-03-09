@@ -1,12 +1,13 @@
-import React, { useState, useEffect, useLayoutEffect,useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image'
-import { render } from 'react-dom';
 
 
 function ImageGrid(props){
     
 	const [imagesState,setImagesState] = useState([]);
     const [galleryWidth, setGalleryWidth] = useState(0);
+    const [lightboxDisplay, setLightBoxDisplay] = useState(false)
+    const [imageToShow, setImageToShow] = useState('')
 
     const refGallery = useRef(null)
 
@@ -110,7 +111,7 @@ function ImageGrid(props){
     }
 
 
-    const images = imagesState.map((item,idx) => {
+    const imageThumnails = imagesState.map((item,idx) => {
         return (
             <div
                 key={idx+item.src}
@@ -121,6 +122,7 @@ function ImageGrid(props){
                     position: "relative",
                     padding: "0px"
                 }}
+                onClick={() => showImage(item)}
             >
                 <Image
                     src={item.thumbnail}
@@ -133,16 +135,44 @@ function ImageGrid(props){
         )   
     });
 
+    const showImage = (image) => {
+        //set imageToShow to be the one that's been clicked on    
+        setImageToShow(image);
+        //set lightbox visibility to true
+        setLightBoxDisplay(true);
+    };
+    const hideLightBox = () => {
+        setLightBoxDisplay(false)
+    }
+    const handleNext = (e) => {
+        e.stopPropagation()
+        let currentIndex = imagesState.indexOf(imageToShow)
+        let nextImage = imagesState[currentIndex + 1]
+        setImageToShow(nextImage)
+    }
+    const handlePrev = (e) => {
+        e.stopPropagation()
+        let currentIndex = imagesState.indexOf(imageToShow)
+        let nextImage = imagesState[currentIndex - 1]
+        setImageToShow(nextImage)
+    }
 
 
     return(
         <div
-            style={{
-                width:'100%'
-            }} 
+            style={{ width:'100%' }} 
             ref={refGallery}
         >
-            {images}
+            {imageThumnails}
+            { lightboxDisplay &&
+            <>
+                <div className="lightbox"  onClick={hideLightBox}>
+                    <img className="lightbox-img" src={imageToShow.src}  />
+                    <button className="lightboxButtonRight" onClick={handleNext}><i className="arrow right"></i></button>
+                    <button className="lightboxButtonLeft" onClick={handlePrev}><i className="arrow left"></i></button>
+                </div>
+            </>
+            }
         </div>
     )
 }
