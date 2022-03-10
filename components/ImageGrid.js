@@ -19,14 +19,24 @@ function ImageGrid(props){
     };
 
     useEffect(() => {
-        window.addEventListener("resize", updateGalleryWidth);
+        window.addEventListener('keypress', e => {
+            handleKeyPress(e)
+        });
+
+        window.addEventListener('resize', updateGalleryWidth);
         updateGalleryWidth()
-        return () => {  window.removeEventListener("resize", updateGalleryWidth); };
+
+
+        return () => { 
+            window.removeEventListener('keypress',handleKeyPress);
+            window.removeEventListener('resize', updateGalleryWidth); 
+        };
     }, []);
 
     useEffect(() =>{
         setImagesState(renderThumbs(galleryWidth,props.images))
-    },[galleryWidth])
+    }, [galleryWidth])
+
 
     const setThumbScale = (item) => {
         item.scaleWidth =
@@ -156,7 +166,26 @@ function ImageGrid(props){
         let nextImage = imagesState[currentIndex - 1]
         setImageToShow(nextImage)
     }
+    const handleKeyPress = (e) =>{ 
+        console.log(e)
+        if (lightboxDisplay === false)
+            return;
+        console.log(e)
+        switch(e.key){
+            // esc
+            case 27:
+                hideLightBox()
+                break
+            // left arrrow
+            case 37:
+                break
+            // right arrow
+            case 39:
+                handleNext()
+                break
+        }
 
+    }
 
     return(
         <div
@@ -167,7 +196,7 @@ function ImageGrid(props){
             { lightboxDisplay &&
             <>
                 <div className="lightbox"  onClick={hideLightBox}>
-                    <img className="lightbox-img" src={imageToShow.src}  />
+                    <img className="lightbox-img" src={imageToShow.src} />
                     <button className="lightboxButtonRight" onClick={handleNext}><i className="arrow right"></i></button>
                     <button className="lightboxButtonLeft" onClick={handlePrev}><i className="arrow left"></i></button>
                 </div>

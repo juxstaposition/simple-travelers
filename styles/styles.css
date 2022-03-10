@@ -905,6 +905,8 @@ h3{
 }
 /* END */
 
+
+/* Lightbox */
 .lightbox {
     z-index: 1001;
     position: fixed;
@@ -915,9 +917,9 @@ h3{
     cursor: pointer;
     background-color: rgb(190, 190, 190, .5);
     /*the following isn't necessary but will help center everything once we add buttons*/
-    /* display: flex; */
+
+    display: flex;
     align-items: center;
-    /* justify-content: space-between; */
     
 }
 
@@ -934,6 +936,7 @@ h3{
 	cursor: pointer;
 	outline: 0;
 	transition: 0.3s ease-in-out;
+    display: flex;
 }
 .lightboxButtons button:hover{
 	background-color: var(--primaryColor);
@@ -959,10 +962,9 @@ h3{
     width: 100%;
     padding: 1em;
     object-fit: contain;
-        
+    
+    
     top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
 }
 /* 
 @media (min-width: 576px) {

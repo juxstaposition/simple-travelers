@@ -651,7 +651,7 @@ function Galeria() {
     return (
 		<div className="page screen-reader-text">
 			<Head>
-				<title>Geléria</title>
+				<title>Galéria</title>
 				<meta property="og:title"       content="Simle Travelers - Galéria" />
 				<meta property="og:description" content="Prehliadni si výber našich najlepších fotiek z cestovania po celom svete." />
 				<meta name="description"        content="Prehliadni si výber našich najlepších fotiek z cestovania po celom svete." />
