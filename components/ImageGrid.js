@@ -10,6 +10,7 @@ function ImageGrid(props){
     const [imageToShow, setImageToShow] = useState('')
 
     const refGallery = useRef(null)
+    const refLightBox = useRef(null)
 
     const updateGalleryWidth = () => {
         if (refGallery.current && refGallery.current.clientWidth) {
@@ -18,18 +19,40 @@ function ImageGrid(props){
         }
     };
 
+
+
     useEffect(() => {
-        window.addEventListener('keypress', e => {
-            handleKeyPress(e)
-        });
+        function handleKeyDown(e) {
+            // check if keydown was contained in target div
+            if (!refLightBox.current || refLightBox.current.contains(e.target)) {
+              return;
+            }
+            e.stopPropagation()
+            switch(e.keyCode){
+                // esc
+                case 27:
+                    hideLightBox()
+                    break
+                // left arrrow
+                case 37:
+                    handlePrev(e)
+                    break
+                // right arrow
+                case 39:
+                    handleNext(e)
+                    break
+            }
+      
+        }
 
         window.addEventListener('resize', updateGalleryWidth);
+        window.addEventListener('keydown', handleKeyDown);
         updateGalleryWidth()
 
-
         return () => { 
-            window.removeEventListener('keypress',handleKeyPress);
             window.removeEventListener('resize', updateGalleryWidth); 
+            
+            window.removeEventListener('keydown', handleKeyDown);
         };
     }, []);
 
@@ -155,37 +178,23 @@ function ImageGrid(props){
         setLightBoxDisplay(false)
     }
     const handleNext = (e) => {
+        console.log(e)
         e.stopPropagation()
         let currentIndex = imagesState.indexOf(imageToShow)
-        let nextImage = imagesState[currentIndex + 1]
+        let nextImage = currentIndex === imagesState.length - 1 ? imagesState[0] : imagesState[currentIndex + 1]
+        console.log(nextImage)
+        console.log(imagesState.length - 1, currentIndex)
         setImageToShow(nextImage)
     }
     const handlePrev = (e) => {
         e.stopPropagation()
         let currentIndex = imagesState.indexOf(imageToShow)
-        let nextImage = imagesState[currentIndex - 1]
+        let nextImage = currentIndex !== 0 ? imagesState[currentIndex - 1] : imagesState[imagesState.length - 1]
+        console.log(nextImage)
+
         setImageToShow(nextImage)
     }
-    const handleKeyPress = (e) =>{ 
-        console.log(e)
-        if (lightboxDisplay === false)
-            return;
-        console.log(e)
-        switch(e.key){
-            // esc
-            case 27:
-                hideLightBox()
-                break
-            // left arrrow
-            case 37:
-                break
-            // right arrow
-            case 39:
-                handleNext()
-                break
-        }
 
-    }
 
     return(
         <div
@@ -194,13 +203,13 @@ function ImageGrid(props){
         >
             {imageThumnails}
             { lightboxDisplay &&
-            <>
-                <div className="lightbox"  onClick={hideLightBox}>
-                    <img className="lightbox-img" src={imageToShow.src} />
-                    <button className="lightboxButtonRight" onClick={handleNext}><i className="arrow right"></i></button>
-                    <button className="lightboxButtonLeft" onClick={handlePrev}><i className="arrow left"></i></button>
+                <div className="lightbox"  onClick={hideLightBox} ref={refLightBox}>
+                    <div className='lightbox-img-wrapper'>
+                        <img className="lightbox-img" src={imageToShow.src} />
+                        <button className="lightboxButtonRight" onClick={handleNext}><i className="arrow right"></i></button>
+                        <button className="lightboxButtonLeft" onClick={handlePrev}><i className="arrow left"></i></button>
+                    </div>
                 </div>
-            </>
             }
         </div>
     )

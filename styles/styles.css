@@ -923,8 +923,22 @@ h3{
     
 }
 
-.lightboxButtons button{
+.lightbox-img{
+    object-fit: contain;
+    width: 100%;
+    
+}
+
+.lightbox-img-wrapper{
+    width: 100%;
+    padding: 1em;
+    top: 50%;
+}
+
+.lightbox button{
 	position: absolute;
+    top: 0;
+    bottom: 0;
 	margin: auto;
 	width: 3em;
 	height: 3em;
@@ -932,40 +946,34 @@ h3{
 	border-radius: calc(4em + 1px);
 	border: 1px solid var(--primaryColor);
 	color: var(--primaryColor);
-	background-color: transparent;
+	background-color: var(--primaryColor);
 	cursor: pointer;
 	outline: 0;
 	transition: 0.3s ease-in-out;
-    display: flex;
 }
-.lightboxButtons button:hover{
-	background-color: var(--primaryColor);
+.lightbox button:hover{
+	background-color: var(--backgroundColor);
 }
-.lightboxButtons button:hover .arrow{
+
+.lightbox button .arrow{
 	border: solid white; 
 	border-width: 0 3px 3px 0;
 }
-.lightboxButtons button:active{
+.lightbox button:hover .arrow{
+	border: solid var(--primaryColor); 
+	border-width: 0 3px 3px 0;
+}
+.lightbox button:active{
 	transform: scale(0.9);
 	transition: 0s ease-in-out;
 }
 .lightboxButtonLeft{
-	left: 0.5em;
-    top: 0;
+    left: 1em;
 }
 .lightboxButtonRight{
-	right: 0.5em;
-    top: 0;
+    right: 1em;
 }
 
-.lightbox-img{
-    width: 100%;
-    padding: 1em;
-    object-fit: contain;
-    
-    
-    top: 50%;
-}
 /* 
 @media (min-width: 576px) {
 	
