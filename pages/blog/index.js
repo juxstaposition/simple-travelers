@@ -6,7 +6,7 @@ import Card from '../../components/Card'
 import LoaderIcon from '../../components/LoaderIcon';
 
 const { Option } = Select;
-const optionsSortSelect = [
+const optionsSel = [
 	{ value:'asc', text: 'najnovšie'},
 	{ value:'dsc', text: 'najstaršie'}
 ]
@@ -20,7 +20,7 @@ const sortArticles = (articles, order) => {
 
 function Blog() {
 	
-	const [sortState, setSortState] = useState(optionsSortSelect[0].value)
+	const [sortState, setSortState] = useState(optionsSel[0].value)
 	const [filterOptions, setFilterOptions] = useState([])
 	const [articlesList, setArticlesList] = useState([])
 	const [articlesDisplay, setArticlesDisplay] = useState([])
@@ -58,8 +58,8 @@ function Blog() {
 	}, []);
 	
 	const handleSortChange = () => {
-		setSortState(sortState === 'asc' ? 'dsc' : 'asc')
-		setArticlesDisplay(sortArticles(articlesDisplay,sortState=== 'asc' ? 'dsc' : 'asc'));
+		setSortState(sortState === optionsSel[0].value ? optionsSel[1].value : optionsSel[0].value)
+		setArticlesDisplay(sortArticles(articlesDisplay,sortState=== optionsSel[0].value ? optionsSel[1].value : optionsSel[0].value));
 	}
 
 	const handleFilterChange = (categoriesList) => {

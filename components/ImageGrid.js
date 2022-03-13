@@ -5,9 +5,9 @@ import Image from 'next/image'
 function ImageGrid(props){
     
 	const [imagesState,setImagesState] = useState([]);
-    const [galleryWidth, setGalleryWidth] = useState(0);
+    // const [galleryWidth, setGalleryWidth] = useState(300);
     const [lightboxDisplay, setLightBoxDisplay] = useState(false)
-    const [imageToShow, setImageToShow] = useState('')
+    const [imageToShow, setImageToShow] = useState(0)
 
     const refGallery = useRef(null)
     const refLightBox = useRef(null)
@@ -15,50 +15,43 @@ function ImageGrid(props){
     const updateGalleryWidth = () => {
         if (refGallery.current && refGallery.current.clientWidth) {
             const width = refGallery.current.clientWidth - 1;
-            setGalleryWidth(width);
+            // setGalleryWidth(width);
+            setImagesState(renderThumbs(width,props.images))
         }
     };
 
-
-
     useEffect(() => {
-        function handleKeyDown(e) {
-            // check if keydown was contained in target div
-            if (!refLightBox.current || refLightBox.current.contains(e.target)) {
-              return;
-            }
-            e.stopPropagation()
-            switch(e.keyCode){
-                // esc
-                case 27:
-                    hideLightBox()
-                    break
-                // left arrrow
-                case 37:
-                    handlePrev(e)
-                    break
-                // right arrow
-                case 39:
-                    handleNext(e)
-                    break
-            }
-      
-        }
 
         window.addEventListener('resize', updateGalleryWidth);
         window.addEventListener('keydown', handleKeyDown);
-        updateGalleryWidth()
+
+        updateGalleryWidth();
 
         return () => { 
             window.removeEventListener('resize', updateGalleryWidth); 
-            
             window.removeEventListener('keydown', handleKeyDown);
         };
     }, []);
 
-    useEffect(() =>{
-        setImagesState(renderThumbs(galleryWidth,props.images))
-    }, [galleryWidth])
+    function handleKeyDown (e) {
+        // check if keydown was contained in target div
+        if (!refLightBox.current || !refLightBox.current.contains(e.target)) {
+            return;
+        }
+        switch(e.keyCode){
+            case 27: // esc
+                hideLightBox()
+                break;
+            case 37: // left arrrow
+                break;
+            case 39: // right arrow
+                break;
+        }
+    }
+
+    // useEffect(() => {
+    //     setImagesState(renderThumbs(galleryWidth,props.images))
+    // }, [galleryWidth])
 
 
     const setThumbScale = (item) => {
@@ -143,6 +136,28 @@ function ImageGrid(props){
         return thumbs;
     }
 
+    function showImage (image) {
+        setImageToShow(image);
+        setLightBoxDisplay(true);
+    };
+
+    const hideLightBox = () => {
+        setLightBoxDisplay(false)
+    }
+
+    const handleNext = (e) => {
+        e.stopPropagation()
+        const currentIndex = imagesState.indexOf(imageToShow)
+        const nextImage = currentIndex === imagesState.length - 1 ? imagesState[0] : imagesState[currentIndex + 1]
+        setImageToShow(nextImage)
+    }
+
+    const handlePrev = (e) => {
+        e.stopPropagation()
+        const currentIndex = imagesState.indexOf(imageToShow)
+        const nextImage = currentIndex !== 0 ? imagesState[currentIndex - 1] : imagesState[imagesState.length - 1]
+        setImageToShow(nextImage)
+    }
 
     const imageThumnails = imagesState.map((item,idx) => {
         return (
@@ -153,62 +168,41 @@ function ImageGrid(props){
                     margin:props.margin,
                     cursor:'pointer',
                     position: "relative",
-                    padding: "0px"
+                    padding: "0px",
+
                 }}
                 onClick={() => showImage(item)}
             >
                 <Image
                     src={item.thumbnail}
-                    item={item}
-                    index={idx}
                     width={item.vwidth}
                     height={props.rowHeight}
                 />
             </div>
         )   
     });
-
-    const showImage = (image) => {
-        //set imageToShow to be the one that's been clicked on    
-        setImageToShow(image);
-        //set lightbox visibility to true
-        setLightBoxDisplay(true);
-    };
-    const hideLightBox = () => {
-        setLightBoxDisplay(false)
-    }
-    const handleNext = (e) => {
-        console.log(e)
-        e.stopPropagation()
-        let currentIndex = imagesState.indexOf(imageToShow)
-        let nextImage = currentIndex === imagesState.length - 1 ? imagesState[0] : imagesState[currentIndex + 1]
-        console.log(nextImage)
-        console.log(imagesState.length - 1, currentIndex)
-        setImageToShow(nextImage)
-    }
-    const handlePrev = (e) => {
-        e.stopPropagation()
-        let currentIndex = imagesState.indexOf(imageToShow)
-        let nextImage = currentIndex !== 0 ? imagesState[currentIndex - 1] : imagesState[imagesState.length - 1]
-        console.log(nextImage)
-
-        setImageToShow(nextImage)
-    }
-
-
+    
     return(
         <div
             style={{ width:'100%' }} 
             ref={refGallery}
         >
             {imageThumnails}
-            { lightboxDisplay &&
-                <div className="lightbox"  onClick={hideLightBox} ref={refLightBox}>
-                    <div className='lightbox-img-wrapper'>
-                        <img className="lightbox-img" src={imageToShow.src} />
+            { 
+                lightboxDisplay &&
+                <div className="lightbox"   ref={refLightBox}>
+                {
+                    imageToShow && 
+                    <div>
+                        <div className='lightbox-img-wrapper' >
+                                <img className="lightbox-img" src={imageToShow.src} />
+                                <p>{imageToShow.caption}</p>
+                        </div>
+                        <span className="close-btn" onClick={hideLightBox}></span>
                         <button className="lightboxButtonRight" onClick={handleNext}><i className="arrow right"></i></button>
                         <button className="lightboxButtonLeft" onClick={handlePrev}><i className="arrow left"></i></button>
                     </div>
+                }
                 </div>
             }
         </div>
@@ -217,18 +211,8 @@ function ImageGrid(props){
 
 ImageGrid.defaultProps = {
     id: "ImageGridGallery",
-    rowHeight: 212,
-    margin: 2,
-    enableLightbox: true,
-    backdropClosesModal: false,
-    currentImage: 0,
-    preloadNextImage: true,
-    isOpen: false,
-    showCloseButton: true,
-    showImageCount: true,
-    lightboxWidth: 1024,
-    showLightboxThumbnails: false,
-    lightBoxProps : {},
+    rowHeight: 210,
+    margin: 2
 };
 
 

@@ -316,7 +316,7 @@ h3{
     margin:1em 0;
     font-weight: bold;
     text-align: left;
-    font-family: 'Raleway';
+    /* font-family: 'Raleway'; */
 }
 
 .screen-reader-text p, .bachledkaTablePrice th,td{
@@ -324,7 +324,7 @@ h3{
     -webkit-font-smoothing: antialiased !important;
     -moz-font-smoothing: antialiased !important;
     text-rendering: optimizelegibility !important;
-    font-size: 1.1em;
+    font-size: 1.4em;
     line-height: 1.8em;
     text-align-last: left;
     font-family: 'Raleway';
@@ -914,25 +914,9 @@ h3{
     left: 0;
     width: 100vw;
     height: 100vh;
-    cursor: pointer;
-    background-color: rgb(190, 190, 190, .5);
-    /*the following isn't necessary but will help center everything once we add buttons*/
-
+    background-color: rgb(100, 100, 100, .7);
     display: flex;
     align-items: center;
-    
-}
-
-.lightbox-img{
-    object-fit: contain;
-    width: 100%;
-    
-}
-
-.lightbox-img-wrapper{
-    width: 100%;
-    padding: 1em;
-    top: 50%;
 }
 
 .lightbox button{
@@ -941,27 +925,22 @@ h3{
     bottom: 0;
 	margin: auto;
 	width: 3em;
-	height: 3em;
+	height: 70%;
 	z-index: 1010;
-	border-radius: calc(4em + 1px);
-	border: 1px solid var(--primaryColor);
-	color: var(--primaryColor);
-	background-color: var(--primaryColor);
+	border: none;
+	background-color: transparent;
 	cursor: pointer;
-	outline: 0;
 	transition: 0.3s ease-in-out;
 }
 .lightbox button:hover{
-	background-color: var(--backgroundColor);
+	transform: scale(1.2);
+	transition: 0s ease-in-out;
 }
 
 .lightbox button .arrow{
-	border: solid white; 
-	border-width: 0 3px 3px 0;
-}
-.lightbox button:hover .arrow{
-	border: solid var(--primaryColor); 
-	border-width: 0 3px 3px 0;
+	border: solid #f0f0f0; 
+    padding: 10px;
+	border-width: 0 4px 4px 0;
 }
 .lightbox button:active{
 	transform: scale(0.9);
@@ -973,6 +952,81 @@ h3{
 .lightboxButtonRight{
     right: 1em;
 }
+
+
+.lightbox .close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    margin: 5px;
+}
+.lightbox .close-btn:before, 
+.lightbox .close-btn:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 20px;
+    background-color: #f0f0f0;
+    transform: rotate(45deg) translate(-50%, -50%);
+    transform-origin: top left;
+    content: '';
+}
+.lightbox .close-btn:after {
+    transform: rotate(-45deg) translate(-50%, -50%);
+}
+.lightbox .close-btn:hover {
+	transform: scale(1.4);
+	transition: 0s ease-in-out;
+}
+.lightbox .close-btn:active{
+	transform: scale(0.9);
+	transition: 0s ease-in-out;
+    
+}
+
+
+.lightbox-img-wrapper{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    /* padding: 1em; */
+}
+
+.lightbox-img{
+    width: 100%;
+}
+
+.lightbox-img-wrapper p{
+    color: white;
+    font-size: 1em;
+}
+
+@media (orientation: landscape) {
+    .lightbox-img-wrapper{
+        max-width: 500px;
+        height: 100%;
+        top: 50%;
+    }
+}
+
+@media (orientation: portrait) {
+    .lightbox-img{
+        width: 90%;
+        max-height: 800px;
+        margin: 0;
+    }
+}
+
+
 
 /* 
 @media (min-width: 576px) {
