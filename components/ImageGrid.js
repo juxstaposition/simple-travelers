@@ -16,6 +16,7 @@ function ImageGrid(props){
         if (refGallery.current && refGallery.current.clientWidth) {
             const width = refGallery.current.clientWidth - 1;
             // setGalleryWidth(width);
+            console.log("width",width)
             setImagesState(renderThumbs(width,props.images))
         }
     };
@@ -97,7 +98,7 @@ function ImageGrid(props){
             for(var i in row) {
                 var pixelsToRemove = cutoff[i];
                 item = row[i];
-                item.marginLeft = -Math.abs(Math.floor(pixelsToRemove / 2));
+                item.marginLeft = -Math.abs(Math.floor(pixelsToRemove / 2 ));
                 item.vwidth = item.scaleWidth - pixelsToRemove;
             }
         }
@@ -181,7 +182,6 @@ function ImageGrid(props){
             </div>
         )   
     });
-    
     return(
         <div
             style={{ width:'100%' }} 
@@ -190,19 +190,17 @@ function ImageGrid(props){
             {imageThumnails}
             { 
                 lightboxDisplay &&
-                <div className="lightbox"   ref={refLightBox}>
+                <div className="lightbox" ref={refLightBox}>
                 {
                     imageToShow && 
-                    <div>
-                        <div className='lightbox-img-wrapper' >
-                                <img className="lightbox-img" src={imageToShow.src} />
-                                <p>{imageToShow.caption}</p>
-                        </div>
-                        <span className="close-btn" onClick={hideLightBox}></span>
-                        <button className="lightboxButtonRight" onClick={handleNext}><i className="arrow right"></i></button>
-                        <button className="lightboxButtonLeft" onClick={handlePrev}><i className="arrow left"></i></button>
+                    <div className={`lightbox-img-wrapper`} >
+                        <img className={`lightbox-img-${imageToShow.thumbnailWidth<imageToShow.thumbnailHeight ? 'portrait':'landscape' }`} src={imageToShow.src} />
+                        <p>{imageToShow.caption}</p>
                     </div>
                 }
+                <span className="close-btn" onClick={hideLightBox}></span>
+                <button className="lightboxButtonRight" onClick={handleNext}><i className="arrow right"></i></button>
+                <button className="lightboxButtonLeft" onClick={handlePrev}><i className="arrow left"></i></button>
                 </div>
             }
         </div>
@@ -211,7 +209,7 @@ function ImageGrid(props){
 
 ImageGrid.defaultProps = {
     id: "ImageGridGallery",
-    rowHeight: 210,
+    rowHeight: 212,
     margin: 2
 };
 

@@ -8,6 +8,10 @@
         --sideLeftMarginSmall: calc(1% + var(--socialMediaIconSize));
         --sideRightMarginSmall: calc(1% + var(--socialMediaIconSize));
     }
+    ::-webkit-scrollbar {
+        -webkit-appearance: none;
+        width: 8px;
+    }
 
     .st-tabs-container h1{
         font-size: 3rem;
