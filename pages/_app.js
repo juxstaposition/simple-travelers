@@ -12,7 +12,8 @@
 */
 import React from 'react';
 import Layout from '../components/Layout';
-import Footer from '../components/Footer'; 
+import Footer from '../components/Footer';
+import Head from 'next/head'; 
 
 import "../styles/styles.css";
 import "../styles/min576.css";
@@ -27,6 +28,11 @@ import 'antd/dist/antd.css';
 function MyApp({ Component, pageProps }) {
 	return (
 		<>
+			<Head>
+				<link rel="icon" type="image/png" sizes="72x72" href="/icons/icon-72x72.png" />
+				<link rel="icon" type="image/png" sizes="96x96" href="/icons/icon-96x96.png" />
+				
+			</Head>
 			<Layout/>
 			<Component {...pageProps} />
 			<Footer />

@@ -31,7 +31,6 @@ export default function Document() {
 				<link rel="shortcut icon" href="/icons/icon-96x96.png" />
 				<meta name="apple-mobile-web-app-capable" content="yes" />
 				<meta name="mobile-web-app-capable" content="yes" />
-				<link rel="icon" type="image/png" sizes="96x96" href="/icons/icon-96x96.png" />
 				<link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png" />
 				<link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png" />
       </Head>

@@ -51,7 +51,7 @@ function Galeria() {
 		<div className="page screen-reader-text">
 			<Head>
 				<title>Galéria</title>
-				<meta property="og:title"       content="Simle Travelers - Galéria" />
+				<meta property="og:title"       content="Simple Travelers - Galéria" />
 				<meta property="og:description" content="Prehliadni si výber našich najlepších fotiek z cestovania po celom svete." />
 				<meta name="description"        content="Prehliadni si výber našich najlepších fotiek z cestovania po celom svete." />
 				<meta property="og:image"       content="http://simpletravelers.sk/images/photosFull/ZionAngelsLanding.jpg" />
