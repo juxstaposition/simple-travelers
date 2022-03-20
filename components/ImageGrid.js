@@ -16,7 +16,6 @@ function ImageGrid(props){
         if (refGallery.current && refGallery.current.clientWidth) {
             const width = refGallery.current.clientWidth - 1;
             // setGalleryWidth(width);
-            console.log("width",width)
             setImagesState(renderThumbs(width,props.images))
         }
     };
@@ -35,10 +34,6 @@ function ImageGrid(props){
     }, []);
 
     function handleKeyDown (e) {
-        // check if keydown was contained in target div
-        if (!refLightBox.current || !refLightBox.current.contains(e.target)) {
-            return;
-        }
         switch(e.keyCode){
             case 27: // esc
                 hideLightBox()
@@ -198,9 +193,9 @@ function ImageGrid(props){
                         <p>{imageToShow.caption}</p>
                     </div>
                 }
-                <span className="close-btn" onClick={hideLightBox}></span>
-                <button className="lightboxButtonRight" onClick={handleNext}><i className="arrow right"></i></button>
-                <button className="lightboxButtonLeft" onClick={handlePrev}><i className="arrow left"></i></button>
+                    <span className="close-btn" onClick={hideLightBox}></span>
+                    <button className="lightboxButtonRight" onClick={handleNext}><i className="arrow right"></i></button>
+                    <button className="lightboxButtonLeft" onClick={handlePrev}><i className="arrow left"></i></button>
                 </div>
             }
         </div>

@@ -1,9 +1,9 @@
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
-import { Form, Select, Row, Col } from 'antd';
+import { Form, Select } from 'antd';
 
 import ImageGrid from '../components/ImageGrid';
 import {IMAGES, CestaSNPIMAGES} from '../data/GalleryImages';
-import { useState } from 'react';
 
 const { Option } = Select;
 
@@ -79,14 +79,6 @@ function Galeria() {
 					</div>
 				)
 			})}
-            {/* <h3>Kolekcia našich najlepších fotiek</h3>
-			<ImageGrid 
-				images={IMAGES}
-			/>
-            <h3>Cesta hrdinov SNP</h3>
-			<ImageGrid 
-				images={CestaSNPIMAGES}
-			/> */}
         </div>
     )
 }

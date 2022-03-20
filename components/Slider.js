@@ -87,7 +87,6 @@ function Slider(props){
                         />
                         <div className={sliderState[prevPicState].class}>
                             <p className="headerMoto">{sliderState[prevPicState].title}</p>
-                            {/* typeof(sliderState[prevPicState]) !== undefined ? sliderState[prevPicState].url : */}
                             <Link className="sliderLink" href={''} passHref><span className="sliderLink">Prečítať</span></Link>
                         </div>
                     </div>
